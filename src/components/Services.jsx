@@ -20,16 +20,19 @@ const categories = [
     services: [
       {
         title: "Landing Pages",
+        price: 1500,
         description:
           "Focused pages for campaigns, products and lead generation, designed around a clear call to action.",
       },
       {
         title: "Corporate Websites",
+        price: 3500,
         description:
           "Professional multi-page websites that explain what your business does and build credibility.",
       },
       {
         title: "Custom Web Experiences",
+        price: null,
         description:
           "Responsive, interactive web experiences tailored to your brand, audience and goals.",
       },
@@ -71,16 +74,19 @@ const categories = [
     services: [
       {
         title: "AI Lead Capture",
+        price: 2500,
         description:
           "Capture enquiries, collect key details, qualify prospects and send organised leads to your team.",
       },
       {
         title: "AI Customer Support",
+        price: 3000,
         description:
           "Help customers get quick answers with AI assistants connected to your business information.",
       },
       {
         title: "Workflow Automation",
+        price: 1800,
         description:
           "Automate repetitive handoffs, notifications and follow-ups across the tools your team already uses.",
       },
@@ -122,16 +128,19 @@ const categories = [
     services: [
       {
         title: "Business Applications",
+        price: null,
         description:
           "Purpose-built tools that help teams manage information and day-to-day operations.",
       },
       {
         title: "API & System Integrations",
+        price: null,
         description:
           "Connect platforms and services so information moves reliably between business tools.",
       },
       {
         title: "Custom Management Systems",
+        price: null,
         description:
           "Centralise specific workflows with tailored dashboards, data views and management features.",
       },
@@ -161,6 +170,9 @@ const categories = [
     ],
   },
 ];
+
+const formatRM = (amount) =>
+  `RM ${amount.toLocaleString("en-MY")}`;
 
 function Services() {
   const [activeId, setActiveId] = useState("web");
@@ -267,13 +279,37 @@ function Services() {
 
               <p>{service.description}</p>
 
-              <a
-                href="#approach"
-                className="service-link"
-              >
-                Discuss this service
-                <ArrowUpRight size={16} />
-              </a>
+              <div className="service-offering-footer">
+                {service.price ? (
+                  <div className="service-price">
+                    <span className="service-price-label">
+                      Starting from
+                    </span>
+                    <span className="service-price-value">
+                      {formatRM(service.price)}
+                    </span>
+                  </div>
+                ) : (
+                  <div className="service-price service-price-quote">
+                    <span className="service-price-label">
+                      Tailored pricing
+                    </span>
+                    <span className="service-price-value">
+                      Quoted per project
+                    </span>
+                  </div>
+                )}
+
+                <a
+                  href="#approach"
+                  className="service-link"
+                >
+                  {service.price
+                    ? "Discuss this service"
+                    : "Request a quote"}
+                  <ArrowUpRight size={16} />
+                </a>
+              </div>
             </article>
           ))}
         </div>
@@ -316,6 +352,8 @@ function Services() {
       <p className="service-stack-disclaimer">
         Technology choices vary depending on project
         requirements, integrations and scalability needs.
+        Prices are in Malaysian Ringgit (RM) and are starting
+        rates; final pricing depends on scope.
       </p>
     </section>
   );

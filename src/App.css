@@ -1456,8 +1456,48 @@
   line-height: 1.75;
 }
 
-.service-offering-card .service-link {
+.service-offering-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  margin-top: auto;
   padding-top: 22px;
+}
+
+.service-price {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  padding-top: 16px;
+  border-top: 1px solid var(--color-border);
+}
+
+.service-price-label {
+  color: var(--color-muted);
+  font-size: 10px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.service-price-value {
+  color: var(--color-text);
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: -0.3px;
+}
+
+.service-price-quote .service-price-value {
+  color: var(--color-accent);
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 0;
+}
+
+.service-offering-card .service-link {
+  margin-top: 0;
+  padding-top: 0;
   font-size: 11px;
 }
 
